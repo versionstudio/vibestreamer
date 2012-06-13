@@ -1,0 +1,4 @@
+This UTF8-CPP source has custom modifications.
+Modified 2009 by Erik Nilsson, software on versionstudio point com
+
+* utf8.h: Changed include paths

@@ -1,0 +1,35 @@
+{<?
+	var shareManager = server.getShareManager();
+
+	response.write("\"shares\" : [");
+		
+	var shares = shareManager.getShares();
+	if ( shares!=null )
+	{
+		var permittedShares = new Array();
+		
+		for ( var i=0,len=shares.length; i<len; i++ ) {
+			var share = shares[i];
+			if ( share.checkPermission(request.getUser(),request.getRemoteAddress()) ) {			
+				permittedShares.push(share);
+			}
+		}
+		
+		for ( var i=0,len=permittedShares.length; i<len; i++ )
+		{
+			var share = permittedShares[i];
+			
+			response.write("{\"guid \" : \"" + share.getGuid() + "\"," +
+					   "\"dbId\" : \"" + share.getDbId() + "\"," +
+					   "\"name\" : \"" + share.getName() + "\"," +
+					   "\"directories\" : \"" + share.getDirectories() + "\"," +
+					   "\"files\" : \"" + share.getFiles() + "\"}");
+
+			if ( i!=(len-1) ) {
+				response.write(",");
+			}
+		}
+	}
+	
+	response.write("]");
+?>}

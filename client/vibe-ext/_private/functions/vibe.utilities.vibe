@@ -1,0 +1,56 @@
+<?
+/*
+	This is the utility library used by the Vibe Streamer client.
+	The library contains helper functionality that are commonly
+	used through the application. This library should not be modified
+	with any non-official code.
+*/
+
+var vibe = vibe || {};
+
+/**
+* Quote the given string, ensuring that the
+* characters are made safe for usage in database queries.
+*/
+vibe.dbQuote = function(s) {
+	return s.replace(/'/g,"''");
+}
+
+/**
+* Check whether a given string ends with a prefix.
+*/
+vibe.endsWith = function(s,prefix) {
+	return s.lastIndexOf(prefix)==s.length-prefix.length;
+}
+
+/**
+* Get whether the given string is alphabetic.
+*/
+vibe.isAlpha = function(s) {
+  var regExp = /[^a-zA-Z]/g;
+  return !regExp.test(s);
+}
+
+/**
+* Get whether the given string contains only characters A-Z, a-z or 0-9.
+*/
+vibe.isAlphaNumeric = function(s) {
+  var regExp = /[^a-zA-Z0-9]/g;
+  return !regExp.test(s);
+}
+
+/**
+* Get whether the given string contains only characters 0-9.
+*/
+vibe.isNumeric = function(s) {
+	var regExp = /[\D]/g;
+	return !regExp.test(s);
+}
+
+/**
+* Check whether a given string starts with a prefix.
+*/
+vibe.startsWith = function(s,prefix) {
+	return s.indexOf(prefix)==0;
+}
+?>

@@ -1,0 +1,94 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/json2.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.lastfm.enabled")=="true" )
+	{
+		var asSessionId = session.getAttribute("plugin.lastfm.sessionId");
+		var asSubmissionUrl = session.getAttribute("plugin.lastfm.submissionUrl");
+	
+		if ( asSessionId!=null && asSubmissionUrl!=null )
+		{
+			var host = asSubmissionUrl.substr(7);
+				host = host.substr(0,host.indexOf(":"));
+			
+			var uri = asSubmissionUrl.substr(7);
+				uri = uri.substr(uri.indexOf("/"));
+				
+			var shareId = request.getParameter("shareId");
+			var hash = request.getParameter("hash");
+			var i = request.getParameter("i");	
+			
+			if ( vibe.isNumeric(shareId) && vibe.isAlphaNumeric(hash) )
+			{
+				// make sure user has access to the share
+				var shareManager = server.getShareManager();
+				var share = shareManager.findShareByDbId(shareId);
+				if ( share!=null && share.checkPermission(request.getUser(),request.getRemoteAddress()) )
+				{
+					var databaseManager = server.getDatabaseManager();
+					var conn = databaseManager.getConnection("index",false);
+					if ( conn!=null )
+					{
+						var a = null;
+						var t = null;
+						var b = null;
+						var l = null;
+						var n = null;
+						
+						var query = "SELECT [mdArtist],[mdTitle],[mdAlbum],[mdLength],[mdTrack]"
+							+ " FROM [items] WHERE [shareId]=" + shareId + " AND [hash]='" + hash + "' LIMIT 1";
+							
+						var jsonResult = conn.executeJson(query);
+						if ( jsonResult!=null )
+						{
+							var result = JSON.parse(jsonResult);
+							if ( result!=null )
+							{
+								var row = result[0];
+								a = row.mdArtist;
+								t = row.mdTitle;
+								b = row.mdAlbum;
+								l = row.mdLength;
+								n = row.mdTrack;
+							}
+						}
+						
+						databaseManager.releaseConnection(conn);
+					}
+				}
+			}			
+
+			if ( a!=null && t!=null && l!=null && i!=null )
+			{
+				if ( b==null ) b = "";
+				if ( n==null ) n = "";
+				
+				// we're using the "escape" function for proper url encoding instead 
+				// of "encodeURIComponent" since spidermonkey is not compiled for utf-8 support.
+
+				var req = new HttpClientRequest(host,uri,80);
+				req.setMethod("POST");
+				req.setParameter("s",asSessionId);
+				req.setParameter("a[0]",escape(a));
+				req.setParameter("t[0]",escape(t));
+				req.setParameter("b[0]",escape(b));
+				req.setParameter("i[0]",i);
+				req.setParameter("o[0]","P");
+				req.setParameter("r[0]","");
+				req.setParameter("l[0]",l);
+				req.setParameter("n[0]",n);
+				req.setParameter("m[0]","");
+					
+				var res = req.execute();	
+				if ( res!=null ) 
+				{
+					var tokens = res.getBody().split("\n");
+					if ( tokens.length>0 ) {
+						response.write("{status : \"" + tokens[0] + "\"}");
+					}
+				}
+			}
+		}
+	}
+?>

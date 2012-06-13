@@ -1,0 +1,285 @@
+/* loader */
+
+#vibe-loader-mask {
+	background-color: #ffffff;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 10000;
+}
+
+#vibe-loader-indicator {
+	color: #545454;
+	float: left;
+	font-family: tahoma;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 12px;	
+	height: auto;
+	left: 40%;
+	position: absolute;
+	text-align: center;
+	top: 40%;
+	z-index: 10001;
+}
+
+#vibe-loader-indicator img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+/* header panel */
+
+.vibe-headerpanel table {
+	width: 100%;
+}
+
+.vibe-headerpanel div {
+	background-color: #dfe8f6;
+}
+
+.vibe-headerpanel-col1 {
+	text-align: left;
+	width: 668px
+}
+
+.vibe-headerpanel-col2 {
+	text-align: left;
+	width: 668px
+}
+
+.vibe-headerpanel-col3 {
+	text-align: right;
+	width: 668px
+}
+
+/* logo panel */
+
+.vibe-logopanel-logo {
+	background-image: url(../images/logo.gif);
+	float: right;
+	height: 19px;
+	margin: 4px 25px 0 15px;
+	width: 105px;
+}
+
+/* module panel */
+
+.vibe-modulepanel .x-panel-header {
+	padding-left: 11px;
+}
+
+/* search panel */
+
+.vibe-searchpanel {
+	padding: 16px 0 0 15px;
+}
+
+/* playlist grid */
+
+.vibe-playlistgrid .x-grid3-scroller {
+	background-image: url(../images/playlistgrid-bg.gif);
+}
+
+.vibe-playlistgrid .x-grid3-row {
+	border-right: 0 !important;
+}
+
+.vibe-playlistgrid-currenttrack {
+	background-image: url(../images/currenttrack-bg.gif);
+}
+
+.vibe-playlistgrid-currenttrack td {
+	color: #ffffff;
+}
+
+.vibe-playlistgrid .x-grid3-row-selected.vibe-playlistgrid-currenttrack {
+	background: transparent url(../images/currenttrack-bg.gif) repeat scroll 0% !important;
+}
+
+.vibe-playlistgrid .x-grid3-row-selected.vibe-playlistgrid-currenttrack td {
+	color: #ffffff;
+}
+
+.vibe-playlistgrid .x-toolbar {
+	height: 20px;
+}
+
+.vibe-playlistgrid .x-toolbar .x-btn-center button {
+	margin: 0 4px 0 4px;
+}
+
+.vibe-playlistgrid .x-toolbar .x-tab-panel {
+	height: 23px !important;
+}
+
+.vibe-playlistgrid-customcheckbox .x-btn-pressed .x-btn-left,
+.vibe-playlistgrid-customcheckbox .x-btn-pressed .x-btn-center,
+.vibe-playlistgrid-customcheckbox .x-btn-pressed .x-btn-right,
+.vibe-playlistgrid-customcheckbox .x-btn-over .x-btn-left,
+.vibe-playlistgrid-customcheckbox .x-btn-over .x-btn-center,
+.vibe-playlistgrid-customcheckbox .x-btn-over .x-btn-right  {
+	background-image:none;
+}
+
+.vibe-playlistgrid-customcheckbox .x-btn-center button {
+	color: #333333 !important;
+}
+
+.vibe-playlistgrid-customcheckbox .x-btn .x-btn-text {
+	background-image: url(../images/checkbox.gif) !important;
+	background-position: 0 -1px !important;
+	background-repeat: no-repeat;
+	padding: 0 0 0 20px;
+}
+
+.vibe-playlistgrid-customcheckbox .x-btn-pressed .x-btn-text {
+	background-image: url(../images/checkbox-checked.gif) !important;
+}
+
+/* buffered grid */
+
+.vibe-bgrid .x-grid3-row {
+	border: 0;
+}
+
+.vibe-bgrid .x-grid3-col-0 {
+	padding-left: 22px;
+}
+
+.vibe-bgrid-icon {
+	background-image: url(../images/icon-unknown.gif) !important;
+	background-position: 4px 1px !important;	
+	background-repeat: no-repeat !important;
+}
+
+/* buffered tree grid */
+
+.vibe-btgrid .x-grid3-row {
+	border: 0;
+	height: 19px;
+}
+
+.vibe-btgrid .x-grid3-cell-inner {
+	margin: 0;
+	padding: 3px 0 0 0;
+}
+
+.vibe-btgrid-elbow-plus {
+	background: transparent url(../images/elbow-plus.gif) repeat-x scroll 0pt -3px;
+	background-repeat: no-repeat;
+	padding: 0 0 0 13px;
+}
+
+.vibe-btgrid-elbow-minus {
+	background: transparent url(../images/elbow-minus.gif) repeat-x scroll 0pt -3px;
+	background-repeat: no-repeat;
+	padding: 0 0 0 13px;
+}
+
+.vibe-btgrid-elbow-none {
+	padding: 0 0 0 13px;
+}
+
+.vibe-btgrid-icon {
+	background-image: url(../images/icon-unknown.gif);
+	background-position: 4px -2px !important;
+	background-repeat: no-repeat !important;
+	padding: 0 0 0 24px;
+}
+
+/* center panel */
+
+.vibe-centerpanel .x-layout-collapsed {
+	display: none !important;
+}
+
+/* link button */
+
+.vibe-linkbtn {
+	padding: 3px 0 0 0;
+}
+
+.vibe-linkbtn a {
+	color: blue;
+	font-family: arial,tahoma,helvetica,sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+}
+
+.vibe-linkbtn-icon a {
+	background-position: 0 2px;
+	background-repeat: no-repeat;
+	padding: 3px 0 2px 18px;
+}
+
+/* tree button */
+
+.vibe-treebtn {
+	cursor: pointer;
+}
+
+.vibe-treebtn-icon {
+	background-position: center center;
+	background-repeat: no-repeat;
+	border: 0 none;
+	height: 18px;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	width: 16px;
+}
+
+/* explorer panel */
+
+/* icons */
+
+.vibe-icon-none {
+	display: none;
+}
+
+.vibe-icon-explorer {
+	background-image: url(../images/explorer.gif) !important;
+}
+
+.vibe-icon-file-mp3 {
+	background-image: url(../images/file-audio.gif) !important;
+}
+
+.vibe-icon-file-gif,
+.vibe-icon-file-jpg,
+.vibe-icon-file-jpeg,
+.vibe-icon-file-png {
+	background-image: url(../images/file-image.gif) !important;
+}
+
+.vibe-icon-file-nfo,
+.vibe-icon-file-txt {
+	background-image: url(../images/file-text.gif) !important;
+}
+
+.vibe-icon-file-unknown {
+	background-image: url(../images/file-unknown.gif) !important;
+}
+
+.vibe-icon-folder {
+	background-image: url(../images/folder.gif) !important;
+}
+
+.vibe-icon-folder-open {
+	background-image: url(../images/folder-open.gif) !important;
+}
+
+.vibe-icon-forum {
+	background-image: url(../images/forum.gif) !important;
+}
+
+.vibe-icon-logout {
+	background-image: url(../images/logout.gif) !important;
+}
+
+.vibe-icon-settings {
+	background-image: url(../images/settings.gif) !important;
+}

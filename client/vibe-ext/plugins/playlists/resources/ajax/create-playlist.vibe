@@ -1,0 +1,29 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.playlists.enabled")=="true" )
+	{
+		var name = request.getParameter("name");
+		if ( name!=null && name.length>0 )
+		{
+			var databaseManager = server.getDatabaseManager();
+			var conn = databaseManager.getConnection("server",true);
+			if ( conn!=null )
+			{
+				conn.executeNonQuery("BEGIN;");
+				
+				var query = "INSERT INTO playlists (userId,name,shared) " +
+					"VALUES (" + request.getUser().getDbId() + ",'" + vibe.dbQuote(name) + "',0);";
+					
+				if ( conn.executeNonQuery(query) ) {
+					query = "SELECT * FROM playlists WHERE playlistId=" + conn.getInsertId();
+					response.write(conn.executeJson(query));
+				}
+				
+				conn.executeNonQuery("COMMIT;");
+				
+				databaseManager.releaseConnection(conn);
+			}
+		}
+	}
+?>

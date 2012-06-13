@@ -1,0 +1,85 @@
+<?
+	var statusCode = request.getAttribute("vibe.httpconnector.error.statuscode");
+	var subStatusCode = request.getAttribute("vibe.httpconnector.error.substatuscode");
+		
+	var errorTitle = "";
+	var errorMessage = "";
+	
+	switch ( statusCode )
+	{
+		case "400":
+		{
+			errorTitle = "Error";
+			errorMessage = "Bad http request";
+		}
+		break;
+
+		case "401":
+		{
+			errorTitle = "Error";
+			errorMessage = "Unauthorized";
+		}
+		break;
+			
+		case "403":
+		{
+			errorTitle = "Forbidden";
+			
+			switch ( subStatusCode )
+			{
+				case "1":
+					errorMessage = "Server is full";
+					break;
+					
+				case "2":
+					errorMessage = "Account is disabled";
+					break;					
+					
+				case "3":
+					errorMessage = "Session limit exceeded";
+					break;					
+					
+				case "4":
+					errorMessage = "Download limit exceeded";
+					break;
+			}
+		}
+		break;
+				
+		case "404":
+		{
+			errorTitle = "Not Found";
+			errorMessage = "Page could not be found";
+		}
+		break;
+		
+		case "500":
+		{
+			errorTitle = "Internal Server Error";
+			errorMessage = "Please try again";
+		}
+		break;		
+	}
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">	
+	<title><? response.write(statusCode); ?> Error</title>
+	<link href="<? response.write(site.getPath());?>/_public/css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="boxwrapper">
+		<div id="boxheader"></div>
+		<div id="boxcontent">
+			
+			<h1><? response.write(statusCode + " " + errorTitle); ?></h1>
+			
+			<? response.write(errorMessage); ?>
+			
+		</div>		
+		<div id="boxfooter"></div>
+	</div>
+</body>
+</html>

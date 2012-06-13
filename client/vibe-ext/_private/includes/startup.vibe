@@ -1,0 +1,18 @@
+<?
+	if ( site.getAttribute("started")!="true" )
+	{
+		// general settings
+		vibe.setDefaultSetting("general.allowCaching","Allow Caching",false);
+		vibe.setDefaultSetting("general.playerBufferTime","Player Buffer Time (Ms)","1000");
+		vibe.setDefaultSetting("general.theme","Theme","gray");
+		vibe.setDefaultSetting("general.title","Title","My Vibe Streamer");
+
+		// startup plugins
+		var pluginNames = vibe.getPluginNames();
+		for ( var i=0,len=pluginNames.length; i<len; i++ ) {
+			server.execute("/plugins/" + pluginNames[i] + "/startup.vibe");
+		}
+
+		site.setAttribute("started","true");
+	}
+?>

@@ -1,0 +1,38 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+[<?
+	if ( vibe.getSetting("plugin.onlineusers.enabled")=="true" )
+	{
+		var sessionManager = server.getHttpServer().getSessionManager();
+		var userManager = server.getUserManager();
+	
+		var sessions = sessionManager.getSessions();
+		for ( var i=0,len=sessions.length; i<len; i++ )
+		{
+			var userSession = sessions[i];
+			var user = userManager.findUserByGuid(userSession.getUserGuid());
+			if ( user!=null )
+			{
+				var lastDownload = userSession.getAttribute("vibe.sharehandler.lastdownload");
+				if ( lastDownload==null ) {
+					lastDownload = "";
+				}
+				
+				var lastPlayed = userSession.getAttribute("vibe.sharehandler.lastplayed");
+				if ( lastPlayed==null ) {
+					lastPlayed = "";
+				}
+				
+				response.write("{\"remoteAddress\" : \"" + userSession.getRemoteAddress() + "\"," +
+				   "\"guid\" : \"" + user.getGuid() + "\"," +
+				   "\"lastDownload\" : \"" + lastDownload + "\"," +
+				   "\"lastLogin\" : \"" + userSession.getCreationTime() + "\"," +
+				   "\"lastPlayed\" : \"" + lastPlayed + "\"," +
+				   "\"name\" : \"" + user.getName() + "\"}");
+			}
+	
+			if ( i!=(len-1) ) {
+				response.write(",");
+			}
+		}
+	}
+?>]

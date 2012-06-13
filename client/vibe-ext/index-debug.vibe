@@ -1,0 +1,85 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<? 
+	site.setAttribute("started",false); 
+?>
+<?@ include file="/_private/includes/startup.vibe" ?>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title><? response.write(vibe.getSetting("general.title")); ?></title>
+	
+	<!-- external css -->
+	<link rel="stylesheet" type="text/css" href="lib/ext-2.3.0/resources/css/ext-all.css" />
+	<link rel="stylesheet" type="text/css" href="lib/ext-ux-livegrid-0.3.1/build/resources/css/ext-ux-livegrid.css" />
+	
+	<!-- external libs -->
+	<script type="text/javascript" src="lib/ext-2.3.0/adapter/ext/ext-base.js"></script>
+	<script type="text/javascript" src="lib/ext-2.3.0/ext-all.js"></script>
+	<script type="text/javascript" src="lib/ext-ux-livegrid-0.3.1/build/livegrid-all.js"></script>
+	<script type="text/javascript" src="lib/swfobject-1.5/swfobject.js"></script>
+	
+	<!-- vibe libs -->
+	<script type="text/javascript" src="src/Application.js"></script>
+	<script type="text/javascript" src="src/Config.js"></script>
+	<script type="text/javascript" src="src/Language.js"></script>
+	<script type="text/javascript" src="src/LibraryFix.js"></script>
+	<script type="text/javascript" src="src/dd/DDHelper.js"></script>	
+	<script type="text/javascript" src="src/dd/GridDropTarget.js"></script>
+	<script type="text/javascript" src="src/gui/explorer/ExplorerDDHelper.js"></script>
+	<script type="text/javascript" src="src/gui/explorer/ExplorerPanel.js"></script>
+	<script type="text/javascript" src="src/gui/player/PlayerPanel.js"></script>
+	<script type="text/javascript" src="src/gui/playlist/Playlist.js"></script>
+	<script type="text/javascript" src="src/gui/playlist/PlaylistGrid.js"></script>
+	<script type="text/javascript" src="src/gui/playlist/PlaylistGridDDHelper.js"></script>
+	<script type="text/javascript" src="src/gui/playlist/PlaylistGridDropTarget.js"></script>
+	<script type="text/javascript" src="src/gui/search/SearchPanel.js"></script>
+	<script type="text/javascript" src="src/gui/settings/SettingsDialog.js"></script>
+	<script type="text/javascript" src="src/plugin/Plugin.js"></script>
+	<script type="text/javascript" src="src/util/FormatUtil.js"></script>
+	<script type="text/javascript" src="src/util/IndexUtil.js"></script>
+	<script type="text/javascript" src="src/util/JsonLoader.js"></script>
+	<script type="text/javascript" src="src/util/ResourceManager.js"></script>
+	<script type="text/javascript" src="src/util/StringUtil.js"></script>
+	<script type="text/javascript" src="src/widget/BufferedGrid.js"></script>
+	<script type="text/javascript" src="src/widget/BufferedTreeGrid.js"></script>
+	<script type="text/javascript" src="src/widget/LinkButton.js"></script>
+	<script type="text/javascript" src="src/widget/TreeButton.js"></script>
+	
+	<!-- vibe theme -->
+<?
+	var theme = vibe.getSetting("general.theme");
+	if ( vibe.isAlphaNumeric(theme) ) {
+		server.execute("/themes/" + theme + "/include.vibe");
+	}
+?>
+
+	<!-- vibe plugins -->
+<?
+	var pluginNames = vibe.getPluginNames();
+	for ( var i=0,len=pluginNames.length; i<len; i++ ) {
+		server.execute("/plugins/" + pluginNames[i] + "/include-debug.vibe");
+	}
+?>
+	
+	<script>
+				
+		Ext.onReady(function()
+		{
+			vibe.Application.on("startup",function(app) {
+				Ext.get("vibe-loader-mask").hide();
+			});
+
+			vibe.Application.init();
+		});
+		
+	</script>
+</head>
+<body>
+	<div id="vibe-loader-mask">
+		<div id="vibe-loader-indicator">
+			<img src="resources/images/loading.gif"/>Loading Vibe Streamer...
+		</div>
+	</div>
+</body>
+</html>

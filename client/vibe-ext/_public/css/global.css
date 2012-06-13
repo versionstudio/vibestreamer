@@ -1,0 +1,96 @@
+/* general */
+
+* {
+	margin: auto;
+	padding: 0;
+}
+
+body {
+	background: none #f0f0f0;
+	margin: 90px 0 0 0;
+	text-align: center;
+}
+
+a {
+	color: #959595;
+}
+
+h1 {
+	color: #8eb200;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+
+div#errormessage {
+	color:#686868;
+	font-family:verdana;
+	font-size:11px;
+}
+
+/* box */
+
+div#boxwrapper {
+	background: url(../images/box-bg.gif) #ffffff repeat-y;
+	width: 380px;
+}
+
+div#boxheader {
+	background: url(../images/box-header.gif) top no-repeat;
+	font: 0;
+	height: 5px;
+}
+
+div#boxtitle {
+	background: url(../images/box-title.gif) top no-repeat;
+	height: 25px;
+}
+
+div#boxcontent {
+	color: #000000;
+	font-family: tahoma;
+	font-size: 11px;
+	padding: 25px 25px 35px 25px;
+	text-align: left;
+}
+
+div#boxfooter {
+	background: url(../images/box-footer.gif) bottom no-repeat;
+	height: 5px;
+}
+
+/* login page */
+
+fieldset#loginform {
+	border: 0;
+}
+
+fieldset#loginform legend {
+	display: none;
+}
+
+fieldset#loginform ol {
+	list-style-type: none;
+}
+
+fieldset#loginform li {
+	float: left;
+}
+
+fieldset#loginform label {
+	display: block;
+	margin: 0 0 4px 0;
+}
+
+fieldset#loginform .loginfield {
+	border: 1px solid #96969d;
+	height: 21px;
+	line-height: 19px;
+	margin: 0 20px 0 0;
+	width: 112px;
+}
+
+fieldset#loginform .loginsubmit {
+	top: 1px;
+}

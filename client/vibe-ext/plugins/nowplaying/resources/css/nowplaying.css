@@ -1,0 +1,23 @@
+.vibe-plugin-nowplaying-cover {
+	margin: 10px 10px 10px 10px;
+}
+
+.vibe-plugin-nowplaying-cover img {
+	height: 178px;
+	width: 178px;	
+}
+
+.vibe-plugin-nowplaying-header {
+	color: #444444;
+	font-family: tahoma,arial,helvetica,sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	margin: 3px 16px 0 16px;
+}
+
+.vibe-plugin-nowplaying-field {
+	color: #333333;
+	font-family: tahoma,arial,helvetica,sans-serif;
+	font-size: 10px;
+	margin: 2px 16px 0 16px;
+}

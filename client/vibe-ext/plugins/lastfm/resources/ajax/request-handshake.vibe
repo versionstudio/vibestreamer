@@ -1,0 +1,41 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?@ include file="/_private/functions/md5.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.lastfm.enabled")=="true" )
+	{
+		var userName = request.getParameter("userName");
+		var password = request.getParameter("password");
+	
+		var timeStamp = parseInt(new Date().getTime()/1000);
+		var md5Password = hex_md5(password);
+		
+		var AUDIOSCROBBLER_HOST = "post.audioscrobbler.com";	
+	
+		var auth = hex_md5(md5Password + timeStamp);
+		var uri = "/";
+		var queryString = "hs=true&p=1.2&c=vie&v=0.1&u=" + userName + "&t=" + timeStamp + "&a=" + auth;
+		
+		var clientRequest = new HttpClientRequest(AUDIOSCROBBLER_HOST,uri,80);
+		    clientRequest.setQueryString(queryString);
+	
+		var clientResponse = clientRequest.execute();
+		if ( clientResponse!=null )
+		{
+			var tokens = clientResponse.getBody().split("\n");
+			if ( tokens.length>3 )
+			{
+				response.write("{status: \"" + tokens[0] + "\"}");
+					
+				session.setAttribute("plugin.lastfm.sessionId",tokens[1]);
+				session.setAttribute("plugin.lastfm.nowPlayingUrl",tokens[2]);
+				session.setAttribute("plugin.lastfm.submissionUrl",tokens[3]);
+			}
+			else {
+				response.write("{status: \"ERROR\"}");
+			}
+		}
+		else {
+			response.write("{status: \"ERROR\"}");
+		}
+	}
+?>

@@ -1,0 +1,87 @@
+<?
+/*
+	This is the settings library used by the Vibe Streamer client.
+	The library contains settings functionality for the web client 
+	and is commonly used through the application.
+	This library should	not be modified with any non-official code.
+*/
+
+var vibe = vibe || {};
+
+/**
+* Get the names of all default settings.
+*/
+vibe.getDefaultSettingNames = function()
+{
+	var settingNames = [];
+	
+	var attributeNames = site.getAttributeNames();
+	for ( var i=0,len=attributeNames.length; i<len; i++ ) {
+		var attributeName = attributeNames[i]; 
+		if ( vibe.startsWith(attributeName,"setting.") && vibe.endsWith(attributeName,".title") ) {
+			settingNames.push(attributeName.substr(8,attributeName.length-14));
+		}
+	}
+	
+	return settingNames;
+}
+
+/**
+* Get the title of a default setting.
+*/
+vibe.getDefaultSettingTitle = function(name) {
+	return site.getAttribute("setting." + name + ".title");
+}
+
+/**
+* Get the value of a default setting.
+*/
+vibe.getDefaultSettingValue = function(name) {
+	return site.getAttribute("setting." + name + ".default");
+}
+
+/**
+* Get the names of all available plugins.
+*/
+vibe.getPluginNames = function()
+{
+	var pluginNames = [];
+	
+	var dir = new File("/plugins");
+	var files = dir.getFiles();
+	for ( var i=0,len=files.length; i<len; i++ ) {
+		if ( files[i].isDirectory() ) {
+			pluginNames.push(files[i].getName());
+		}
+	}
+	
+	return pluginNames;
+}
+
+/**
+* Get the value of the setting with the given name.
+* The setting is fetched from either the current users role 
+* or the site options. If no setting is found, a specified 
+* default value will try to be fetched from the site attributes.
+*/
+vibe.getSetting = function(name)
+{
+	var value = request.getUser().getRoleOption("setting." + name);
+	if ( value==null ) {
+		value = site.getOption("setting." + name);
+		if ( value==null ) {
+			value = site.getAttribute("setting." + name + ".default");
+		}
+	}
+	
+	return value;
+}
+
+/**
+* Set a default setting.
+*/
+vibe.setDefaultSetting = function(name,title,defaultValue) {
+	site.setAttribute("setting." + name + ".default",defaultValue);
+	site.setAttribute("setting." + name + ".title",title);
+}
+?>

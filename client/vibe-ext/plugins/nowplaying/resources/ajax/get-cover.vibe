@@ -1,0 +1,63 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	function findDirectoryCover(shareId,hash,coverPatterns)
+	{
+		var result = null;
+		
+		var databaseManager = server.getDatabaseManager();
+		var conn = databaseManager.getConnection("index",false);
+		if ( conn!=null )
+		{
+			var nameExpression = "";
+			var tokens = coverPatterns.split("|");
+			for ( var i=0,len=tokens.length; i<len; i++ )
+			{
+				if ( nameExpression.length>0 ) {
+					nameExpression += " OR ";
+				}
+				
+				var token = tokens[i];
+				if ( token.indexOf("*")!=-1 ) {
+					token = token.replace(/\*/g,"%");
+					nameExpression += "[name] LIKE '" + vibe.dbQuote(token) + "'";
+				}
+				else {
+					nameExpression += "[name]='" + vibe.dbQuote(token) + "'";
+				}
+			}
+			
+			var query = "SELECT [hash] FROM [items] WHERE [shareId]=" + shareId
+				+ " AND [parentItemId]=(SELECT parentItemId FROM [items] WHERE hash='" + hash + "')"
+				+ " AND (" + nameExpression + ")"
+				+ " LIMIT 1";
+			
+			result = conn.executeString(query)
+
+			databaseManager.releaseConnection(conn);
+		}
+		
+		return result;
+	}
+
+	var shareId = request.getParameter("shareId");
+	var hash = request.getParameter("hash");
+
+	if ( vibe.isNumeric(shareId) && vibe.isAlphaNumeric(hash) )
+	{
+		// make sure user has access to the share
+		var shareManager = server.getShareManager();
+		var share = shareManager.findShareByDbId(shareId);
+		if ( share!=null && share.checkPermission(request.getUser(),request.getRemoteAddress()) )
+		{
+			// check for cover file within the same directory as the given item
+			var coverPatterns = vibe.getSetting("plugin.nowplaying.coverPatterns");
+			if ( coverPatterns!=null && coverPatterns.length>0 ) {
+				var hash = findDirectoryCover(shareId,hash,coverPatterns);
+				if ( hash!=null ) {
+					response.write("{\"hash\": \"" + hash + "\"}");
+				}
+			}
+		}
+	}
+?>

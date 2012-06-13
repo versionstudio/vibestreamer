@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<site>
+    <defaultDocuments>
+        <defaultDocument>index.vibe</defaultDocument>    
+        <defaultDocument>index.html</defaultDocument>
+    </defaultDocuments>
+    <errorPages>
+        <errorPage>
+            <errorCode>400</errorCode>
+            <message>Bad request</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>401</errorCode>
+            <message>Unauthorized</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>403</errorCode>
+            <message>Forbidden</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>403.1</errorCode>
+            <message>Forbidden - Server is full</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>403.2</errorCode>
+            <message>Forbidden - Account is disabled</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>        
+        <errorPage>
+            <errorCode>403.3</errorCode>
+            <message>Forbidden - Session limit exceeded</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>        
+        <errorPage>
+            <errorCode>403.4</errorCode>
+            <message>Forbidden - Download limit exceeded</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>404</errorCode>
+            <message>Not Found</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+        <errorPage>
+            <errorCode>500</errorCode>
+            <message>Internal server error</message>
+            <location>/_private/error/error.vibe</location>
+        </errorPage>
+    </errorPages>
+    <mimeMappings>
+        <mimeMapping>
+            <extension>css</extension>
+            <mimeType>text/css;charset=utf8</mimeType>
+        </mimeMapping>    
+        <mimeMapping>
+            <extension>gif</extension>
+            <mimeType>image/gif</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>html</extension>
+            <mimeType>text/html;charset=utf8</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>js</extension>
+            <mimeType>text/javascript;charset=utf8</mimeType>
+        </mimeMapping>         
+        <mimeMapping>
+            <extension>jpeg</extension>
+            <mimeType>image/jpeg</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>jpg</extension>
+            <mimeType>image/jpeg</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>mp3</extension>
+            <mimeType>audio/mpeg</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>png</extension>
+            <mimeType>image/png</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>swf</extension>
+            <mimeType>application/x-shockwave-flash</mimeType>
+        </mimeMapping>
+        <mimeMapping>
+            <extension>xml</extension>
+            <mimeType>text/xml;charset=utf8</mimeType>
+        </mimeMapping>
+    </mimeMappings>
+</site>

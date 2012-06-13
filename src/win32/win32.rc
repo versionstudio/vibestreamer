@@ -1,0 +1,874 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Swedish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
+#ifdef _WIN32
+LANGUAGE LANG_SWEDISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOGEX 0, 0, 205, 121
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "",IDC_STATIC_APPLICATION,10,40,185,10
+    CONTROL         113,IDC_ABOUT_LOGO,"Static",SS_BITMAP | SS_RIGHTJUST | 
+                    SS_REALSIZEIMAGE,0,0,205,30
+    DEFPUSHBUTTON   "Close",IDC_BUTTON_CLOSE,77,98,50,14,BS_CENTER | 
+                    BS_BOTTOM
+    LTEXT           "http://www.vibestreamer.com",IDC_STATIC_URL,30,51,164,8
+    LTEXT           "Copyright 2009 by Erik Nilsson at versionstudio.com\r\nLogo by creationrebel.se",
+                    IDC_STATIC,10,74,186,17
+    LTEXT           "Web:",IDC_STATIC,10,51,18,8
+    LTEXT           "E-mail: software@versionstudio.com",IDC_STATIC,10,63,
+                    184,8
+END
+
+IDD_STARTUP DIALOGEX 0, 0, 184, 22
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CTEXT           "",IDC_STATIC_MESSAGE,7,7,170,8
+END
+
+IDD_CLEANUP DIALOGEX 0, 0, 184, 22
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CTEXT           "",IDC_STATIC_MESSAGE,7,7,170,8
+END
+
+IDD_TAB_STATUS DIALOGEX 0, 0, 340, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Connected Sessions",IDC_STATIC_GROUP_SESSIONS,0,0,340,
+                    80
+    GROUPBOX        "Server Log",IDC_STATIC_GROUP_SERVERLOG,0,85,339,77
+    CONTROL         "",IDC_LIST_SESSIONS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,
+                    10,13,320,57
+    PUSHBUTTON      "Start",IDC_BUTTON_STARTSTOP,262,166,78,14
+    CONTROL         "",IDC_EDIT_SERVERLOG,"RichEdit20A",ES_MULTILINE | 
+                    ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,10,99,
+                    320,48
+END
+
+IDD_TAB_USERS DIALOGEX 0, 0, 340, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Users",IDC_STATIC_GROUP_USERS,0,0,166,180
+    GROUPBOX        "Groups",IDC_STATIC_GROUP_GROUPS,174,0,166,180
+    CONTROL         "",IDC_LIST_GROUPS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | 
+                    WS_TABSTOP,184,12,146,158
+    CONTROL         "",IDC_LIST_USERS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | 
+                    WS_TABSTOP,10,13,146,157
+END
+
+IDD_TAB_SETTINGS DIALOGEX 0, 0, 340, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_TREE_SETTINGS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | TVS_NOSCROLL | WS_BORDER | 
+                    WS_TABSTOP,0,3,95,176
+    PUSHBUTTON      "Save Changes",IDC_BUTTON_SAVECHANGES,258,166,82,14,
+                    WS_DISABLED
+END
+
+IDD_TAB_SHARING DIALOGEX 0, 0, 340, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Shared Directories",IDC_STATIC_GROUP_SHAREDDIRECTORIES,
+                    0,0,340,180
+    CONTROL         "",IDC_LIST_SHARES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,10,13,319,157
+END
+
+IDD_PAGE_SERVER DIALOGEX 0, 0, 236, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Server Settings",IDC_STATIC_GROUP_SETTINGS,0,0,235,48
+    LTEXT           "Port",IDC_STATIC,163,12,39,8
+    EDITTEXT        IDC_EDIT_PORT,162,22,60,14,ES_NUMBER
+    GROUPBOX        "Session Settings",IDC_STATIC,0,105,235,54
+    LTEXT           "Max connected sessions",IDC_STATIC,11,121,85,8
+    LTEXT           "Session timeout (seconds)",IDC_STATIC,11,137,93,8
+    EDITTEXT        IDC_EDIT_MAXSESSIONS,162,118,60,14,ES_NUMBER
+    EDITTEXT        IDC_EDIT_SESSIONTIMEOUT,162,134,60,14,ES_NUMBER
+    CONTROL         "Check this box if your router is UPnP certified and want to\nauto-configure port forwarding.",
+                    IDC_CHECK_AUTOCONFIGUREROUTER,"Button",BS_AUTOCHECKBOX | 
+                    BS_MULTILINE | WS_TABSTOP,11,65,212,23
+    GROUPBOX        "UPnP Settings",IDC_STATIC,0,53,235,46
+    EDITTEXT        IDC_EDIT_ADDRESS,9,23,115,14,ES_AUTOHSCROLL
+    LTEXT           "- What is this?",IDC_STATIC_WHATISTHIS,38,12,45,8
+    LTEXT           "Address",IDC_STATIC,10,12,28,8
+END
+
+IDD_PAGE_GENERAL DIALOGEX 0, 0, 236, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "General Settings",IDC_STATIC_GROUP_OPTIONS,0,0,235,159
+    CONTROL         "",IDC_LIST_OPTIONS,"SysListView32",LVS_LIST | 
+                    LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,
+                    10,14,215,135
+END
+
+IDD_USER DIALOGEX 0, 0, 346, 198
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,232,177,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,289,177,50,14
+    CONTROL         "",IDC_TREE_SETTINGS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | TVS_NOSCROLL | WS_BORDER | 
+                    WS_TABSTOP,7,7,95,166
+END
+
+IDD_PAGE_USERSETUP DIALOGEX 0, 0, 228, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Setup",IDC_STATIC_GROUP_SETUP,0,0,228,62
+    GROUPBOX        "Member of Groups",IDC_STATIC_GROUP_MEMBEROFGROUPS,0,69,
+                    228,101
+    LTEXT           "Username",IDC_STATIC_NAME,10,12,71,8
+    EDITTEXT        IDC_EDIT_NAME,9,23,100,12
+    LTEXT           "Password",IDC_STATIC_PASSWORD,118,12,71,8
+    EDITTEXT        IDC_EDIT_PASSWORD,117,23,100,12
+    CONTROL         "Account is disabled",IDC_CHECK_DISABLED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,43,109,10
+    CONTROL         "",IDC_LIST_GROUPS,"SysListView32",LVS_REPORT | 
+                    LVS_SORTASCENDING | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | 
+                    WS_BORDER | WS_TABSTOP,10,83,207,75
+END
+
+IDD_PAGE_USERGENERAL DIALOGEX 0, 0, 227, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "General",IDC_STATIC_GROUP_GENERAL,0,0,227,78
+    GROUPBOX        "Share Limits",IDC_STATIC_GROUP_SHARELIMITS,0,85,227,85
+    CONTROL         "Max number of sessions",IDC_CHECK_MAXSESSIONS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,45,137,9
+    CONTROL         "Max number of sessions per IP",
+                    IDC_CHECK_MAXSESSIONSPERIP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,59,137,9
+    CONTROL         "Enable streaming limit",IDC_CHECK_MAXDOWNLOAD,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,99,202,10
+    EDITTEXT        IDC_EDIT_MAXSESSIONS,156,41,60,12,ES_NUMBER
+    EDITTEXT        IDC_EDIT_MAXSESSIONSPERIP,156,56,60,12,ES_NUMBER
+    CONTROL         "Bypass server limits",IDC_CHECK_BYPASSLIMITS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,29,137,10
+    EDITTEXT        IDC_EDIT_MAXDOWNLOAD,21,112,59,12,ES_NUMBER
+    LTEXT           "MB per",IDC_STATIC,87,114,23,8
+    COMBOBOX        IDC_COMBO_MAXDOWNLOADPERIOD,115,112,48,51,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Enable streaming bandwidth limit",
+                    IDC_CHECK_MAXBANDWIDTH,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,134,202,10
+    EDITTEXT        IDC_EDIT_MAXBANDWIDTH,21,147,59,12,ES_NUMBER
+    LTEXT           "KB per second",IDC_STATIC_KBPERSECOND,87,149,46,8
+    CONTROL         "Administrator",IDC_CHECK_ADMIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,14,77,10
+    CONTROL         "Browse access only",IDC_CHECK_BROWSER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,95,14,117,10
+END
+
+IDD_PAGE_USERSTATISTICS DIALOGEX 0, 0, 227, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Last known IP",IDC_STATIC,11,38,105,8
+    LTEXT           "Last login",IDC_STATIC,12,25,105,8
+    LTEXT           "Number of logins",IDC_STATIC,11,13,105,8
+    RTEXT           "-",IDC_STATIC_VALUE_NUMBEROFLOGINS,126,13,88,8
+    RTEXT           "-",IDC_STATIC_VALUE_LASTLOGIN,126,25,88,8
+    RTEXT           "-",IDC_STATIC_VALUE_LASTKNOWNIP,126,38,88,8
+    GROUPBOX        "Logins",IDC_STATIC,0,0,227,57
+    GROUPBOX        "Share Transfers",IDC_STATIC,0,66,227,104
+    LTEXT           "This month",IDC_STATIC,11,105,105,8
+    LTEXT           "This week",IDC_STATIC,11,92,105,8
+    LTEXT           "Today",IDC_STATIC,10,81,105,8
+    RTEXT           "-",IDC_STATIC_DAYDOWNLOAD,79,81,134,8
+    RTEXT           "-",IDC_STATIC_WEEKDOWNLOAD,79,94,134,8
+    RTEXT           "-",IDC_STATIC_MONTHDOWNLOAD,79,106,134,8
+    LTEXT           "Total",IDC_STATIC,11,123,105,8
+    RTEXT           "-",IDC_STATIC_TOTALDOWNLOAD,79,126,134,8
+END
+
+IDD_SHARE DIALOGEX 0, 0, 346, 198
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,232,177,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,289,177,50,14
+    CONTROL         "",IDC_TREE_SETTINGS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | TVS_NOSCROLL | WS_BORDER | 
+                    WS_TABSTOP,7,7,95,166
+END
+
+IDD_PAGE_SHARESETUP DIALOGEX 0, 0, 228, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Setup",IDC_STATIC_GROUP_SETUP,0,0,228,73
+    LTEXT           "Path",IDC_STATIC_PATH,10,12,206,8
+    EDITTEXT        IDC_EDIT_PATH,9,23,147,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSE,166,22,50,13
+    LTEXT           "Virtual name",IDC_STATIC_VIRTUALNAME,10,40,206,8
+    EDITTEXT        IDC_EDIT_VIRTUALNAME,9,50,207,12,ES_AUTOHSCROLL
+    GROUPBOX        "Indexing",IDC_STATIC_GROUP_INDEXING,0,80,227,47
+    CONTROL         "Enable automatic indexing",IDC_CHECK_AUTOINDEX,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,93,206,10
+    LTEXT           "Automatic indexing interval (minutes)",
+                    IDC_STATIC_AUTOINDEXINTERVAL,21,106,139,8
+    EDITTEXT        IDC_EDIT_AUTOINDEXINTERVAL,176,104,40,12
+END
+
+IDD_PAGE_SHAREPERMISSIONS DIALOGEX 0, 0, 228, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Permissions",IDC_STATIC_GROUP_ACCESSRULES,0,0,228,170
+    CONTROL         "",IDC_LIST_PERMISSIONS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | LVS_SHAREIMAGELISTS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,11,14,207,145
+END
+
+IDD_INDEXING DIALOGEX 0, 0, 302, 138
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Indexing Progress"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Status",IDC_STATIC_GROUP_STATUS,7,7,288,40
+    GROUPBOX        "Progress",IDC_STATIC_GROUP_PROGRESS,7,53,288,56
+    PUSHBUTTON      "Abort Process",IDC_BUTTON_ABORT,212,117,83,14,
+                    WS_DISABLED
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER,20,86,264,
+                    12
+    LTEXT           "Action",IDC_STATIC_ACTION,19,19,165,8
+    LTEXT           "Time Elapsed",IDC_STATIC_TIMEELAPSED,213,19,70,8
+    LTEXT           "",IDC_STATIC_VALUE_ACTION,20,30,165,8
+    LTEXT           "00:00:00",IDC_STATIC_VALUE_TIMEELAPSED,214,30,70,8
+    LTEXT           "",IDC_STATIC_VALUE_MESSAGE,21,64,260,16
+END
+
+IDD_TAB_SECURITY DIALOGEX 0, 0, 340, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Site Permissions",IDC_STATIC_GROUP_SITEPERMISSIONS,0,0,
+                    340,180
+    CONTROL         "",IDC_LIST_SITEPERMISSIONS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,
+                    10,13,319,148
+    LTEXT           "All incoming connections are always blocked unless no rule specifies differently",
+                    IDC_STATIC,11,166,251,8
+END
+
+IDD_PERMISSION DIALOGEX 0, 0, 192, 167
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Add Permission"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,77,146,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,135,146,50,14
+    GROUPBOX        "Permission",IDC_STATIC_GROUP_PERMISSION,7,7,178,32
+    CONTROL         "Allow",IDC_RADIO_ALLOW,"Button",BS_AUTORADIOBUTTON,17,
+                    20,33,10
+    CONTROL         "Deny",IDC_RADIO_DENY,"Button",BS_AUTORADIOBUTTON,61,20,
+                    33,10
+    GROUPBOX        "User or Group",IDC_STATIC_GROUP_USERORGROUP,7,43,178,38
+    GROUPBOX        "IP Address",IDC_STATIC_GROUP_IPADDRESS,7,86,178,52
+    EDITTEXT        IDC_EDIT_IPADDRESS1,17,115,33,12,ES_CENTER
+    EDITTEXT        IDC_EDIT_IPADDRESS2,58,115,33,12,ES_CENTER
+    EDITTEXT        IDC_EDIT_IPADDRESS3,99,115,33,12,ES_CENTER
+    EDITTEXT        IDC_EDIT_IPADDRESS4,141,115,33,12,ES_CENTER
+    COMBOBOX        IDC_COMBO_USERSGROUPS,17,58,157,78,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Enable IP address restriction",
+                    IDC_CHECK_IPADDRESSRESTRICTION,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,17,100,107,10
+END
+
+IDD_PAGE_GROUPSETUP DIALOGEX 0, 0, 228, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Setup",IDC_STATIC_GROUP_SETUP,0,0,228,62
+    LTEXT           "Name",IDC_STATIC_NAME,10,12,71,8
+    EDITTEXT        IDC_EDIT_NAME,9,23,208,12
+    CONTROL         "Group is disabled",IDC_CHECK_DISABLED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,43,109,10
+END
+
+IDD_GROUP DIALOGEX 0, 0, 346, 198
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,232,177,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,289,177,50,14
+    CONTROL         "",IDC_TREE_SETTINGS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | TVS_NOSCROLL | WS_BORDER | 
+                    WS_TABSTOP,7,7,95,166
+END
+
+IDD_PAGE_GROUPGENERAL DIALOGEX 0, 0, 227, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "General",IDC_STATIC_GROUP_GENERAL,0,0,227,78
+    GROUPBOX        "Share Limits",IDC_STATIC_GROUP_SHARELIMITS,0,85,227,85
+    CONTROL         "Browse access only",IDC_CHECK_BROWSER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,95,14,117,10
+    CONTROL         "Max number of sessions",IDC_CHECK_MAXSESSIONS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,45,137,9
+    CONTROL         "Max number of sessions per IP",
+                    IDC_CHECK_MAXSESSIONSPERIP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,59,137,9
+    CONTROL         "Enable streaming limit",IDC_CHECK_MAXDOWNLOAD,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,99,202,10
+    EDITTEXT        IDC_EDIT_MAXSESSIONS,156,41,60,12,ES_NUMBER
+    EDITTEXT        IDC_EDIT_MAXSESSIONSPERIP,156,56,60,12,ES_NUMBER
+    CONTROL         "Bypass server limits",IDC_CHECK_BYPASSLIMITS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,29,205,10
+    EDITTEXT        IDC_EDIT_MAXDOWNLOAD,21,112,59,12,ES_NUMBER
+    LTEXT           "MB per",IDC_STATIC,87,114,23,8
+    COMBOBOX        IDC_COMBO_MAXDOWNLOADPERIOD,115,112,48,51,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Enable streaming bandwidth limit",
+                    IDC_CHECK_MAXBANDWIDTH,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,134,202,10
+    EDITTEXT        IDC_EDIT_MAXBANDWIDTH,21,147,59,12,ES_NUMBER
+    LTEXT           "KB per second",IDC_STATIC_KBPERSECOND,87,149,46,8
+    CONTROL         "Administrator",IDC_CHECK_ADMIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,14,77,10
+END
+
+IDD_SERVERMONITOR DIALOGEX 0, 0, 292, 126
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Server Monitor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Http Server",IDC_STATIC,7,7,136,112
+    LTEXT           "Connected sessions",IDC_STATIC,17,59,85,8
+    LTEXT           "Active threads",IDC_STATIC,17,19,101,8
+    LTEXT           "Idle threads",IDC_STATIC,17,31,101,8
+    LTEXT           "Connected clients",IDC_STATIC,17,47,87,8
+    GROUPBOX        "Broadcasting",IDC_STATIC,149,7,136,112
+    LTEXT           "Configured broadcasts",IDC_STATIC,159,19,85,8
+    LTEXT           "Active channels",IDC_STATIC,159,31,97,8
+    LTEXT           "Active listeners",IDC_STATIC,159,43,94,8
+    RTEXT           "0",IDC_STATIC,116,19,17,8
+    RTEXT           "0",IDC_STATIC,116,31,17,8
+    RTEXT           "0",IDC_STATIC,116,47,17,8
+    RTEXT           "0",IDC_STATIC,116,59,17,8
+    RTEXT           "0",IDC_STATIC,257,19,17,8
+    RTEXT           "0",IDC_STATIC,257,31,17,8
+    RTEXT           "0",IDC_STATIC,257,43,17,8
+END
+
+IDD_PAGE_SSL DIALOGEX 0, 0, 236, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "SSL Settings",IDC_STATIC_GROUP_SETTINGS,0,0,235,123
+    LTEXT           "Certificate file",IDC_STATIC,10,30,153,8
+    EDITTEXT        IDC_EDIT_SSLCERTIFICATEFILE,9,40,147,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSESSLCERTIFICATEFILE,164,40,50,
+                    14
+    LTEXT           "Certificate key file",IDC_STATIC,10,61,153,8
+    EDITTEXT        IDC_EDIT_SSLCERTIFICATEKEYFILE,9,71,147,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSESSLCERTIFICATEKEYFILE,165,71,
+                    50,14
+    CONTROL         "Enable SSL encryption",IDC_CHECK_SSLENABLED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,9,14,141,10
+    LTEXT           "Certificate key password",IDC_STATIC,10,89,153,8
+    EDITTEXT        IDC_EDIT_SSLCERTIFICATEKEYPASSWORD,9,99,147,14,
+                    ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "Password will be stored in plain text",IDC_STATIC,165,
+                    98,64,21
+END
+
+IDD_PAGE_LOGGING DIALOGEX 0, 0, 236, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Logging",IDC_STATIC,0,0,235,49
+    LTEXT           "Server log path",IDC_STATIC,10,13,153,8
+    EDITTEXT        IDC_EDIT_PATH,9,24,157,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSE,175,24,50,14
+END
+
+IDD_PAGE_INDEXING DIALOGEX 0, 0, 236, 159
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Indexing File Pattern",IDC_STATIC,0,0,235,61
+    LTEXT           "The pattern describes what files should be indexed by the server and must be formatted as a valid regular expression.",
+                    IDC_STATIC,12,35,212,24
+    GROUPBOX        "Indexing Settings",IDC_STATIC,0,69,235,33
+    CONTROL         "Include hidden files and folders",
+                    IDC_CHECK_INCLUDEHIDDEN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,83,211,10
+    EDITTEXT        IDC_EDIT_FILEPATTERN,11,16,212,14,ES_AUTOHSCROLL
+END
+
+IDD_PAGE_USERTRANSCODING DIALOGEX 0, 0, 227, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Transcoding",IDC_STATIC_GROUP,0,0,227,33
+    CONTROL         "Enable real-time transcoding",IDC_CHECK_TRANSCODER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,14,203,10
+    LTEXT           "Transcoding allows the server to stream audio formats that are otherwise not supported.",
+                    IDC_STATIC,7,39,211,26
+END
+
+IDD_PAGE_GROUPTRANSCODING DIALOGEX 0, 0, 227, 171
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Transcoding",IDC_STATIC_GROUP,0,0,227,33
+    CONTROL         "Enable real-time transcoding",IDC_CHECK_TRANSCODER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,14,203,10
+    LTEXT           "Transcoding allows the server to stream audio formats that are otherwise not supported.",
+                    IDC_STATIC,7,39,211,26
+END
+
+IDD_PAGE_TRANSCODING DIALOGEX 0, 0, 236, 160
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Transcoding Settings",IDC_STATIC_GROUP,0,0,235,159
+    LTEXT           "These settings can be changed by manually editing server.xml in the configuration folder.",
+                    IDC_STATIC,9,13,216,25
+END
+
+IDD_UPDATE DIALOGEX 0, 0, 267, 73
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Check For Updates"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Status",IDC_STATIC,7,7,253,39
+    LTEXT           "",IDC_STATIC_STATUS,18,19,231,8
+    LTEXT           "Download it now from the Vibe Streamer website",
+                    IDC_STATIC_DOWNLOADLINK,18,30,231,8,NOT WS_VISIBLE
+    PUSHBUTTON      "Check Again",IDC_BUTTON_CHECKAGAIN,193,52,67,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_STARTUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 15
+    END
+
+    IDD_CLEANUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 15
+    END
+
+    IDD_PAGE_SERVER, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_PAGE_GENERAL, DIALOG
+    BEGIN
+        RIGHTMARGIN, 234
+    END
+
+    IDD_USER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 339
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_PAGE_USERSETUP, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PAGE_USERGENERAL, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PAGE_USERSTATISTICS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_SHARE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 339
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_PAGE_SHARESETUP, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PAGE_SHAREPERMISSIONS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_INDEXING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 295
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    IDD_TAB_SECURITY, DIALOG
+    BEGIN
+        RIGHTMARGIN, 339
+    END
+
+    IDD_PERMISSION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 185
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_PAGE_GROUPSETUP, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_GROUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 339
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_PAGE_GROUPGENERAL, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_SERVERMONITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 285
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 119
+    END
+
+    IDD_PAGE_SSL, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_PAGE_LOGGING, DIALOG
+    BEGIN
+        RIGHTMARGIN, 234
+    END
+
+    IDD_PAGE_USERTRANSCODING, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PAGE_GROUPTRANSCODING, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PAGE_TRANSCODING, DIALOG
+    BEGIN
+        RIGHTMARGIN, 234
+    END
+
+    IDD_UPDATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 260
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_VIBE                ICON                    "icon-vibe.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Restore &Default Settings",   ID_FILE_RESTOREDEFAULTSETTINGS
+
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Indexing Progress",          ID_VIEW_INDEXINGPROGRESS
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",                    ID_VIEW_REFRESH
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Minimize to Tray",           ID_WINDOW_MINIMIZETOTRAY
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About",                      ID_HELP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "&Website",                    ID_HELP_WEBSITE
+        MENUITEM "&Documentation",              ID_HELP_DOCUMENTATION
+        MENUITEM SEPARATOR
+        MENUITEM "Chec&k For Updates",          ID_HELP_CHECKFORUPDATES
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_TOP                 BITMAP                  "bitmap-top.bmp"
+IDB_ABOUT               BITMAP                  "bitmap-about.bmp"
+IDB_USERGROUP           BITMAP                  "bitmap-usergroup.bmp"
+IDB_TOGGLE              BITMAP                  "bitmap-toggle.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ALLOWED             "Allowed"
+    IDS_INVALIDIPADDRESS    "IP address is not valid"
+    IDS_VALUE               "Value"
+    IDS_ADDUSER             "Add user"
+    IDS_EDITUSER            "Edit user"
+    IDS_CLOSING             "Closing"
+    IDS_ADDGROUP            "Add group"
+    IDS_EDITGROUP           "Edit group"
+    IDS_INVALIDGROUPNAME    "Group name is not valid"
+    IDS_GROUPEXISTS         "Group already exists"
+    IDS_SETTINGS_AUTOSTART  "Auto-start server at startup"
+    IDS_SETTINGS_CONFIRMEXIT "Confirm application exit"
+    IDS_KICKSESSION         "Kick session"
+    IDS_REALLYEXIT          "Really exit?"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_IDLE                "Idle"
+    IDS_ANALYZING           "Analyzing"
+    IDS_INDEXING            "Indexing"
+    IDS_VALIDATING          "Validating"
+    IDS_EVERYONE            "Everyone"
+    IDS_SETTINGS_MINIMIZETOTRAY "Minimize to tray"
+    IDS_ANY                 "Any"
+    IDS_YES                 "Yes"
+    IDS_NO                  "No"
+    IDS_SERVERRUNNING       "Server is Running"
+    IDS_STATUS              "Status"
+    IDS_USERSGROUPS         "Users and Groups"
+    IDS_SHARING             "Sharing"
+    IDS_SETTINGS            "Settings"
+    IDS_SECURITY            "Security"
+    IDS_ADD                 "Add"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_EDIT                "Edit"
+    IDS_REMOVE              "Remove"
+    IDS_SHAREEXISTS         "Share already exists"
+    IDS_ADDSHARE            "Add share"
+    IDS_EDITSHARE           "Edit share"
+    IDS_INDEXALL            "Index All Files"
+    IDS_VIRTUALNAME         "Virtual Name"
+    IDS_PATH                "Path"
+    IDS_SIZE                "Size"
+    IDS_LASTINDEXED         "Last Indexed"
+    IDS_INITIALIZING        "Initializing"
+    IDS_CLEAR               "Clear"
+    IDS_TIME                "Time"
+    IDS_MESSAGE             "Message"
+    IDS_CONNECTEDSESSIONS   "Connected Sessions"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SERVERNOTRUNNING    "Server is Not Running"
+    IDS_NAME                "Name"
+    IDS_IPADDRESS           "IP Address"
+    IDS_CONNECTED           "Connected"
+    IDS_START               "Start"
+    IDS_STOP                "Stop"
+    IDS_INVALIDUSERNAME     "Username is not valid"
+    IDS_INVALIDPASSWORD     "Password is not valid"
+    IDS_USEREXISTS          "User already exists"
+    IDS_DELETE              "Delete"
+    IDS_GROUPS              "Groups"
+    IDS_USERS               "Users"
+    IDS_INVALIDVIRTUALNAME  "Virtual name is not valid"
+    IDS_INVALIDPATH         "Path is not valid"
+    IDS_SHOWWINDOW          "Show window"
+    IDS_EXIT                "Exit"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MINIMIZETOTRAY      "Minimize to tray"
+    IDS_FORMAT_CONNECTEDSESSIONS "Connected Sessions: %d"
+    IDS_RESTOREDEFAULTSETTINGS_CONFIRM 
+                            "Are you sure you want to restore defaults and lose your own settings?\r\nYour users, groups, shares and security settings will be kept."
+    IDS_FORMAT_STREAMING    "Streaming: %d KB/s"
+    IDS_RESTOREDEFAULTSETTINGS "Restore Default Settings"
+    IDS_INDEXNEW            "Index New Files Only"
+    IDS_SETTINGS_CHECKFORUPDATES "Automatically check for updates"
+END
+
+#endif    // Swedish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

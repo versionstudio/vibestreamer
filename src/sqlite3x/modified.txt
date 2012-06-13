@@ -1,0 +1,4 @@
+This Sqlite3x source has custom modifications.
+Modified 2009 by Erik Nilsson, software on versionstudio point com
+
+* sqlite3x_reader.cpp: Added method sqlite3_reader::getcolcount()

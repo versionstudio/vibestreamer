@@ -1,0 +1,22 @@
+.vibe-plugin-lastfm .x-fieldset {
+	padding-top: 0;
+}
+
+.vibe-plugin-lastfm .x-form-item {
+	color: #444444;
+}
+
+.vibe-plugin-lastfm img {
+	margin: 10px 0 10px 29px;
+}
+
+.vibe-plugin-lastfm-status {
+	font-size: 11px;	
+	font-weight: bold;
+	margin: 0 0 10px 0;
+	text-align: center;
+}
+
+.vibe-plugin-lastfm-status a {
+	color: #0000ff;
+}

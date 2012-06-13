@@ -1,0 +1,54 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?
+	var shareId = request.getParameter("shareId");
+	var hash = request.getParameter("hash");
+	var directories = request.getParameter("directories")=="true";
+	var files = request.getParameter("files")=="true";
+		
+	if ( vibe.isNumeric(shareId) && (directories || files) )
+	{
+		var shareManager = server.getShareManager();
+		var share = shareManager.findShareByDbId(shareId);
+		if ( share!=null && share.checkPermission(request.getUser(),request.getRemoteAddress()) )
+		{
+			var databaseManager = server.getDatabaseManager();
+			var conn = databaseManager.getConnection("index",false);
+			if ( conn!=null )
+			{
+				var query = null;
+				
+				if ( directories && !files )
+				{
+					query = "SELECT [itemId],[shareId],[parentItemId],[name],[hash],[directory],[directories],[files],[lastWriteTime] " +
+						"FROM [items] WHERE [shareId]=" + vibe.dbQuote(shareId);
+				}
+				else
+				{
+					query = "SELECT [itemId],[shareId],[parentItemId],[name],[hash],[directory],[directories],[files],[size],[lastWriteTime]," +
+						"[mdAlbum],[mdArtist],[mdLength],[mdTitle],[mdTrack],[mdYear],[mdBitRate] " +
+						"FROM [items] WHERE [shareId]=" + vibe.dbQuote(shareId);
+				}
+									
+				if ( hash!=null ) {
+					query += " AND [parentItemId]=(SELECT itemId FROM [items] WHERE hash='" + vibe.dbQuote(hash) + "' AND shareId=" + shareId + ")";
+				}
+				else {
+					query += " AND [parentItemId]=0";
+				}
+				
+				if ( directories && !files ) {
+					query += " AND [directory]=1";
+				}
+				else if ( files && !directories ) {
+					query += " AND [directory]=0";
+				}
+				
+				query += " ORDER BY [directory] DESC,[name]";
+				
+				response.write(conn.executeJson(query));
+				
+				databaseManager.releaseConnection(conn);
+			}
+		}
+	}
+?>

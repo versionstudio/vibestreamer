@@ -1,0 +1,68 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( request.getUser().isRoleAdmin() )
+	{
+		var userGuid = request.getParameter("userGuid");
+		var groupGuid = request.getParameter("groupGuid");
+		
+		var userManager = server.getUserManager();
+		var user = null;
+		var group = null;
+		
+		if ( userGuid!=null ) {
+			user = userManager.findUserByGuid(userGuid);
+			var optionNames = user.getOptionNames();
+			for ( var i=0,len=optionNames.length; i<len; i++ ) {
+				var optionName = optionNames[i];
+				if ( vibe.startsWith(optionName,"setting.") ) {
+					user.removeOption(optionName);
+				}
+			}
+		}
+		else if ( groupGuid!=null ) {
+			group = userManager.findGroupByGuid(groupGuid);
+			var optionNames = group.getOptionNames();
+			for ( var i=0,len=optionNames.length; i<len; i++ ) {
+				var optionName = optionNames[i];
+				if ( vibe.startsWith(optionName,"setting.") ) {
+					group.removeOption(optionName);
+				}
+			}			
+		}
+		else {
+			var optionNames = site.getOptionNames();
+			for ( var i=0,len=optionNames.length; i<len; i++ ) {
+				var optionName = optionNames[i];
+				if ( vibe.startsWith(optionName,"setting.") ) {
+					site.removeOption(optionName);
+				}
+			}
+		}
+		
+		var parameterNames = request.getParameterNames();
+		for ( var i=0,len=parameterNames.length; i<len; i++ )
+		{
+			var settingName = parameterNames[i];
+			if ( settingName=="userGuid" || settingName=="groupGuid" ) {
+				continue;
+			}
+			
+			if ( vibe.getDefaultSettingTitle(settingName)==null ) {
+				continue;
+			}
+			
+			var settingValue = request.getParameter(settingName);
+			
+			if ( user!=null ) {
+				user.setOption("setting." + settingName,settingValue);
+			}
+			else if ( group!=null ) {
+				group.setOption("setting." + settingName,settingValue);
+			}
+			else {
+				site.setOption("setting." + settingName,settingValue);
+			}
+		}
+	}
+?>

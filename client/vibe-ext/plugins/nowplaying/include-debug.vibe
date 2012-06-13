@@ -1,0 +1,2 @@
+<link rel="stylesheet" type="text/css" href="plugins/nowplaying/resources/css/nowplaying.css" />
+<script type="text/javascript" src="plugins/nowplaying/src/NowPlayingPlugin.js"></script>

@@ -1,0 +1,17 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.playlists.enabled")=="true" )
+	{
+		var databaseManager = server.getDatabaseManager();
+		var conn = databaseManager.getConnection("server",false);
+		if ( conn!=null )
+		{
+			var query = "SELECT * FROM playlists " + 
+				"WHERE userId=" + request.getUser().getDbId();
+				
+			response.write(conn.executeJson(query));
+		
+			databaseManager.releaseConnection(conn);
+		}
+	}
+?>

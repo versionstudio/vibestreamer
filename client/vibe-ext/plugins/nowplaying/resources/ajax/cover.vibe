@@ -1,0 +1,47 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?><?
+	function findMetadataCover(shareId,hash)
+	{
+		var image = null; 
+		
+		var databaseManager = server.getDatabaseManager();
+		var conn = databaseManager.getConnection("index",false);
+		if ( conn!=null )
+		{						
+			var query = "SELECT [path] FROM [items] WHERE [shareId]=" + shareId
+				+ " AND [hash]='" + hash + "' LIMIT 1";
+				
+			var path = conn.executeString(query);
+			if ( path!=null )
+			{
+				var indexer = server.getIndexer();
+				var images = indexer.readMetadataImages(path);
+				if ( images.length>0 ) {
+					image = images[0];
+				}
+			}
+			
+			databaseManager.releaseConnection(conn);
+		}
+		
+		return image;
+	}
+
+	var shareId = request.getParameter("shareId");
+	var hash = request.getParameter("hash");
+
+	if ( vibe.isNumeric(shareId) && vibe.isAlphaNumeric(hash) )
+	{
+		// make sure user has access to the share
+		var shareManager = server.getShareManager();
+		var share = shareManager.findShareByDbId(shareId);
+		if ( share!=null && share.checkPermission(request.getUser(),request.getRemoteAddress()) )
+		{
+			// check for metadata cover image
+			var image = findMetadataCover(shareId,hash);
+			if ( image!=null ) {
+				response.setContentType(image.getMimeType());
+				response.binaryWrite(image.getData());
+			}
+		}
+	}
+?>

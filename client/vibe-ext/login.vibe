@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Login</title>
+	<link href="_public/css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="boxwrapper">
+		<div id="boxheader"></div>
+		<div id="boxtitle"></div>
+		<div id="boxcontent">
+			
+			<form method="post" action="<? response.write(site.getPath());?>/auth/">
+				<input type="hidden" name="auth_target" value="<? if (request.getParameter("target")!=null) response.write(request.getParameter("target")); ?>">
+				<fieldset id="loginform">
+					<legend>Vibe Streamer login</legend>
+					<ol>
+						<li>
+							<label for="username">Username</label>
+							<input id="username" class="loginfield" name="auth_username" type="text"/>
+						</li>
+						<li>
+							<label for="password">Password</label>
+							<input id="password" class="loginfield" name="auth_password" type="password"/>
+						</li>
+						<li>
+							<label>&nbsp;</label>
+							<input class="loginbutton" name="login" type="image" src="_public/images/login.gif"/>
+						</li>
+					</ol>
+				</fieldset>
+			</form>
+			
+		</div>
+		<div id="boxfooter"></div>
+	</div>
+	
+	<div id="errormessage">
+	<? if ( request.getParameter("error")!=null ) { ?>
+		Invalid username or password
+	<? } ?>
+	</div>
+</body>
+</html>

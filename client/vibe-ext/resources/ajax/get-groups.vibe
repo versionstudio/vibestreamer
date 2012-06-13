@@ -1,0 +1,18 @@
+[<?
+	if ( request.getUser().isRoleAdmin() )
+	{
+		var userManager = server.getUserManager();
+		var groups = userManager.getGroups();
+		for ( var i=0,len=groups.length; i<len; i++ )
+		{
+			var group = groups[i];
+			response.write("{\"dbId\": \"" + group.getDbId() + "\"," +
+				"\"guid\": \"" + group.getGuid() + "\"," +
+				"\"name\": \"" + group.getName() + "\"}");
+				
+			if ( i!=(len-1) ) {
+				response.write(",");
+			}				
+		}
+	}
+?>]

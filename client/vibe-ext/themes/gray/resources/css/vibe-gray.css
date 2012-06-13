@@ -1,0 +1,11 @@
+.vibe-headerpanel div {
+	background-color: #f0f0f0;
+}
+
+.vibe-playlistgrid .x-toolbar {
+	background: transparent url(../images/gray/panel/white-top-bottom.gif) repeat-x scroll 0pt -1px;
+}
+
+.vibe-playlistgrid .x-toolbar .x-btn-center button {
+	color: #1d85b5;
+}

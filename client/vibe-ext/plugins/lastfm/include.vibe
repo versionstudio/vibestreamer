@@ -1,0 +1,5 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<? if ( vibe.getSetting("plugin.lastfm.enabled")=="true" ) { ?>
+	<link rel="stylesheet" type="text/css" href="plugins/lastfm/resources/css/lastfm.css" />
+	<script type="text/javascript" src="plugins/lastfm/build/lastfm-all.js"></script>
+<? } ?>

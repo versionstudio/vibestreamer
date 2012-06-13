@@ -1,0 +1,61 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?
+	var SAFE_LIMIT = 1000; // prevent heavy queries
+	
+	var expression = request.getParameter("expression");
+	var directories = request.getParameter("directories")=="true";
+	var files = request.getParameter("files")=="true";
+	
+	if ( expression.length>0 && (directories || files) )
+	{
+		var user = request.getUser();
+		var shareIds = "";
+				
+		var shareManager = server.getShareManager();
+		var shares = shareManager.getShares();
+		if ( shares!=null )
+		{					
+			for ( var i=0,len=shares.length; i<len; i++ ) {
+				var share = shares[i];
+				if ( share.checkPermission(user,request.getRemoteAddress()) ) {			
+					shareIds += (shareIds.length==0) ? share.getDbId() : "," + share.getDbId();
+				}
+			}
+		}
+			
+		if ( shareIds.length>0 )
+		{
+			var databaseManager = server.getDatabaseManager();
+			var conn = databaseManager.getConnection("index",false);
+			if ( conn!=null )
+			{
+				var query = null;
+	
+				if ( directories && !files )
+				{
+					query = "SELECT [itemId],[shareId],[parentItemId],[name],[hash],[directory],[directories],[files],[lastWriteTime] " +
+						"FROM [items] WHERE [name] LIKE '%" + vibe.dbQuote(expression) + "%'";
+				}
+				else
+				{
+					query = "SELECT [itemId],[shareId],[parentItemId],[name],[hash],[directory],[directories],[files],[size],[lastWriteTime]," +
+						"[mdAlbum],[mdArtist],[mdLength],[mdTitle],[mdTrack],[mdYear],[mdBitRate] " +
+						"FROM [items] WHERE [name] LIKE '%" + vibe.dbQuote(expression) + "%'";
+				}
+				
+				if ( directories && !files ) {
+					query += " AND [directory]=1";
+				}
+				else if ( files && !directories ) {
+					query += " AND [directory]=0";
+				}
+				
+				query += " AND shareId IN (" + shareIds + ") ORDER BY [directory] DESC,[name] LIMIT " + SAFE_LIMIT;
+						
+				response.write(conn.executeJson(query));
+				
+				databaseManager.releaseConnection(conn);
+			}
+		}
+	}
+?>

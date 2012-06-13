@@ -1,0 +1,5 @@
+<?
+	if ( request.getUser()!=null ) {
+		response.write("{\"success\": true}");
+	}
+?>

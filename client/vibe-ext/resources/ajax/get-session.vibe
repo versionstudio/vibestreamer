@@ -1,0 +1,16 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+{<?
+	var user = request.getUser();
+	
+	response.write("\"guid\" : \"" + session.getGuid() + "\",");
+	response.write("\"dbId\" : \"" + session.getDbId() + "\",");
+	response.write("\"settings\" : {\"allowCaching\" : \"" + vibe.getSetting("general.allowCaching") + "\"," +
+		"\"playerBufferTime\" : \"" + vibe.getSetting("general.playerBufferTime") + "\"," +
+		"\"theme\" : \"" + vibe.getSetting("general.theme") + "\"," +
+		"\"title\" : \"" + vibe.getSetting("general.title") + "\"},");
+	response.write("\"user\" : {\"guid\" : \"" + user.getGuid() + "\"," +
+		"\"dbId\" : " + user.getDbId() + "," +	
+		"\"admin\" : " + user.isRoleAdmin() + "," +
+		"\"browser\" : " + user.isRoleBrowser() + "," +
+		"\"name\" : \"" + user.getName() + "\"}");		
+?>}

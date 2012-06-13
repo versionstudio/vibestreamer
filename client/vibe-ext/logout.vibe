@@ -1,0 +1,22 @@
+<?
+	session.invalidate();
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>You have logged out successfully</title>
+	<link href="_public/css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="boxwrapper">
+		<div id="boxheader"></div>
+		<div id="boxcontent">
+			<h1>Logged out...</h1>
+			You have logged out successfully. <a href="login.vibe">Go back to login</a>
+		</div>
+		<div id="boxfooter"></div>
+	</div>
+</body>
+</html>

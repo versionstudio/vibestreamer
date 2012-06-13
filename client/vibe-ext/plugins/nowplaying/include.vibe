@@ -1,0 +1,3 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<link rel="stylesheet" type="text/css" href="plugins/nowplaying/resources/css/nowplaying.css" />
+<script type="text/javascript" src="plugins/nowplaying/build/nowplaying-all.js"></script>

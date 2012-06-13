@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<sites>
+    <site>
+        <name>Default Site</name>
+        <root>sites/default</root>
+        <path />
+        <anonymousAccess>false</anonymousAccess>
+        <anonymousUserGuid></anonymousUserGuid>
+        <authForm>/login.vibe</authForm>
+        <authRealm>My Vibe Streamer</authRealm>
+        <authType>form</authType>
+        <permissions>
+            <permission>
+                <userGuid></userGuid>
+                <groupGuid></groupGuid>
+                <remoteAddress></remoteAddress>
+                <allowed>true</allowed>
+            </permission>
+        </permissions>
+    </site>
+</sites>

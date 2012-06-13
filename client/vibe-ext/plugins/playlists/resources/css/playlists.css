@@ -1,0 +1,16 @@
+.vibe-plugin-playlists-panel .vibe-linkbtn a {
+	color: black;
+	margin: 0 0 0 16px;
+}
+
+.vibe-plugin-playlists-icon-add {
+	background-image: url(../images/add.gif) !important;
+}
+
+.vibe-plugin-playlists-icon-playlist {
+	background-image: url(../images/playlist.gif) !important;
+}
+
+.vibe-plugin-playlists-icon-remove {
+	background-image: url(../images/remove.gif) !important;
+}

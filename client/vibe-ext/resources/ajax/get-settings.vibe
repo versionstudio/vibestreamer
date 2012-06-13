@@ -1,0 +1,72 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+[<?
+	if ( request.getUser().isRoleAdmin() )
+	{
+		var userGuid = request.getParameter("userGuid");
+		var groupGuid = request.getParameter("groupGuid");
+	
+		var userManager = server.getUserManager();
+		var user = null;
+		var group = null;
+		
+		if ( userGuid!=null ) {
+			user = userManager.findUserByGuid(userGuid);
+		}
+		else if ( groupGuid!=null ) {
+			group = userManager.findGroupByGuid(groupGuid);
+		}
+
+		var settingNames = vibe.getDefaultSettingNames();
+		for ( var i=0,len=settingNames.length; i<len; i++ ) 
+		{
+			var name = settingNames[i];
+			var title = vibe.getDefaultSettingTitle(name);
+			var value = null;
+			var inherited = false;
+			
+			if ( user!=null )
+			{
+				value = user.getOption("setting." + name);
+				if ( value==null ) {
+					inherited = true;
+					value = user.getRoleOption("setting." + name);
+					if ( value==null ) {
+						value = site.getOption("setting." + name);
+						if ( value==null ) {
+							value = vibe.getDefaultSettingValue(name);
+						}
+					}
+				}
+			}
+			else if ( group!=null )
+			{
+				value = group.getOption("setting." + name);
+				if ( value==null ) {
+					inherited = true;
+					value = site.getOption("setting." + name);
+					if ( value==null ) {
+						value = vibe.getDefaultSettingValue(name);
+					}
+				}				
+			}
+			else
+			{
+				value = site.getOption("setting." + name);
+				if ( value==null ) {
+					inherited = true;
+					value = vibe.getDefaultSettingValue(name);
+				}
+			}
+			
+			response.write("{\"name\": \"" + name + "\"," +
+				"\"title\": \"" + title + "\"," +
+				"\"value\": \"" + value + "\"," +
+				"\"inherited\": " + inherited + "}");
+
+			if ( i!=(len-1) ) {
+				response.write(",");
+			}
+		}
+	}
+?>]

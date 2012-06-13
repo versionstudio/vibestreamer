@@ -1,0 +1,34 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.onlineusers.enabled")=="true" )
+	{
+		var userGuid = request.getParameter("userGuid");
+		if ( userGuid!=null )
+		{
+			var userManager = server.getUserManager();
+			var user = userManager.findUserByGuid(userGuid);
+			if ( user!=null )
+			{
+				var lastTrack = "";
+				var lastLogin = request.getParameter("lastLogin");
+				var lastPlayed = request.getParameter("lastPlayed");
+				if ( lastPlayed.length>0 )
+				{
+					var databaseManager = server.getDatabaseManager();
+					var conn = databaseManager.getConnection("index",false);
+					if ( conn!=null )
+					{
+						lastTrack = conn.executeString("SELECT ([mdArtist] || ' - ' || [mdTitle]) AS lastTrack" +
+							" FROM [items] WHERE [hash]='" + vibe.dbQuote(lastPlayed) + "' LIMIT 1");
+						
+						databaseManager.releaseConnection(conn);
+					}
+				}
+				
+				response.write("<div style=\"padding: 0 0 5px 0\"><b>Last login:</b><br/> " + lastLogin + "</div>" +
+					"<div><b>Last track:</b><br/>" + lastTrack + "</div>");
+			}
+		}
+	}
+?>

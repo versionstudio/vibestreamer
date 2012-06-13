@@ -1,0 +1,5 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<? if ( vibe.getSetting("plugin.onlineusers.enabled")=="true" ) { ?>
+	<link rel="stylesheet" type="text/css" href="plugins/onlineusers/resources/css/onlineusers.css" />
+	<script type="text/javascript" src="plugins/onlineusers/build/onlineusers-all.js"></script>
+<? } ?>

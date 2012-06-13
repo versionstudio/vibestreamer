@@ -1,0 +1,123 @@
+-- 3.1.0 2012-06-13 --
+* The first open source version. Released under GPLv3 license
+
+-- 3.1.0 beta 2010-01-14 --
+* Added UTF-8 support for the web server and the index
+* Fixed bug where the effect of setting the <path> element in sites.xml didn't work as expected
+* The server now uses regular expressions instead of wildcard searches internally
+* Upgraded boost library to 1.40
+
+-- 3.0.2 2009-11-26 --
+* Added support for displaying cover art found in the ID3 metadata
+* Fixed last.fm plugin encoding problem
+* Added button to the web client for toggling the explorer
+* Added setting to the web client for player buffer time
+* Upgraded SQLite and TagLib to latest versions
+* Fixed the server GUI to work slightly better with higher DPI settings
+* Settings in the web client are now listed alphabetically
+* UPnP is now working on Windows 7
+* Metadata field "Track" is now available in the playlist
+
+-- 3.0.1 2009-11-11 --
+* Minor bug fixes in server and web client GUI
+* Upgraded Ext JS to 2.3.0
+* Modified and refactored web client structure
+* Implemented settings dialog in web client for administrators
+
+-- 3.0.0 2009-09-18 --
+* The first official release of Vibe Streamer 3
+
+-- 2.0.6 2006-07-06 --
+* Added menu shortcut for checking for new versions and renamed setting for
+  automatically checking for new versions
+* All confirm and cancel buttons have switched positions for a more standard
+  GUI application behavior
+* Fixed a bug in the web client that could cause random timeouts when connected 
+  to the server. This was discovered by some users running Firefox or Opera
+* Files and folders are now indexed alphabetically correct on all file systems
+  
+-- 2.0.5 2006-05-02 --
+* Users, groups and shared directories are now sorted alphabeticly when listed
+  in server GUI and the web client
+* The web client player now gives better detailed error messages
+* Disabled the "click" sound that could be heard every 10 seconds in the web client
+  if you had an active sound scheme in windows
+* Auto-indexing interval can now be set to higher than 999 minutes
+* Fixed a bug that prevented some IP addresses from being added to the security tab
+* Non-audio files opened from the web client are now displayed in a new window
+* Write-protected files can now be streamed without any problems
+* Flash embedding no longer requires Internet Explorer users to click the player
+  before the loading is loaded
+* VSL: It is now possible to display the last occured HTTP error from the Session object
+  
+-- 2.0.4 2006-02-13 --
+* Added support for ID3v2
+* The web client now displays song length
+* Added a new favicon
+* Updated information regarding security rules in the server GUI
+* Fixed a bug where some URLs were improperly encoded in the web client
+* Renaming a shared file will no longer list it as duplicate when re-indexing
+* VSL: Added the Time property to the ID3Info object
+* VSL: Renamed the Song and Comments properties on the ID3Info object
+  
+-- 2.0.3 2006-02-06 --
+* The web client will now display the chosen server name in the title bar
+* Added support for forms to the web client
+* Added support for user stored playlists.
+* Increase the timeout for automatic updates
+* Changed the default server name to: My Personal Vibe Server
+* Fixed a bug related to socket send blocking that could cause slow transfer speed
+* MIME types are now handled correctly in the web client
+* The server now shuts down properly, saving all settings whenever a user shuts down
+  or reboots while the server is still running
+* The web client now displays an error message if a file cannot be loaded into the playlist
+* Space characters are now properly URL encoded by the server
+* Users with browse-access only will now get a warning message when trying to add a folder to the playlist
+* Resizing the player panel to a zero-width or zero-height will no longer cause an error
+* Fixed a cache issue for Opera users
+* VSL: Added support for variable referencing, giving the script engine a huge performance boost
+* VSL: Question marks are no longer removed from strings
+* VSL: User created arrays are now supported
+* VSL: Added support for NULL values
+* VSL: Removed the Extension property from the File object
+* VSL: Removed the Length property of the array type and added new function count() which
+       returns the number of elements in an array
+* VSL: Added the NumSessions property to the ServerInfo object and deprecated get_num_online() function
+* VSL: Renamed function get_querystring() to request_querystring()
+* VSL: Renamed the VirtualName property of the File and Folder objects
+* VSL: Added new global functions. See documentation for details
+
+-- 2.0.2 2005-12-09 --
+* Added repeat, shuffle and history support to the web client
+* It is now possible to limit transfer speed for users
+* User statistics can now be reset through the server GUI
+* Double-click a connected user in the server GUI to view or edit
+* Added MIME type settings to the server GUI
+* Added menu option to restore all server settings to default
+* Added a setting for activitating server when the application starts
+* Added a setting for automatically checking for new versions of the application
+* Indexing window now displays more details
+* Usernames are no longer case sensitive
+* Added a new section for advanced settings to the server GUI
+* The Flash player in the web client now resets when playlist is complete
+* Fast streaming activities no longer causes unnecessary CPU load
+* User group memberships are now listed properly
+* VSL: Added the property MIMEType to the File object
+
+-- 2.0.1 2005-11-14 --
+* Added more functionality and details in user properties window
+* Added more logging options
+* Installation now provides an uninstaller
+* Closing the application will now minimize to system tray
+* Group memberships are now restricted to one group per user
+* Connected sessions are now immediately kicked when stopping the server
+* Fixed bug where web server was not properly shut down when closing the application
+* Shared directory size will now be properly reset when aborting an ongoing indexing
+* Shared directory size will now be updated immediately after a successfull indexing
+* Fixed a bug where some characters prevented files and folders to be accessed.
+* Fixed a bug that caused some sessions to never be logged out properly
+* VSL: Added function get_current_session()
+* VSL: Added the property HasBrowseAccessOnly to the Session object
+
+-- 2.0.0 2005-11-02 --
+* The first official release of Vibe Streamer 2

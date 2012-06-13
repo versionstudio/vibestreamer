@@ -1,0 +1,5 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<? if ( vibe.getSetting("plugin.playlists.enabled")=="true" ) { ?>
+	<link rel="stylesheet" type="text/css" href="plugins/playlists/resources/css/playlists.css" />
+	<script type="text/javascript" src="plugins/playlists/build/playlists-all.js"></script>
+<? } ?>

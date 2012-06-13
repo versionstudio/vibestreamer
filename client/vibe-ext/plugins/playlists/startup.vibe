@@ -1,0 +1,6 @@
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( site.getAttribute("started")!="true" ) {
+		vibe.setDefaultSetting("plugin.playlists.enabled","Playlists Enabled",true);
+	}
+?>

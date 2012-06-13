@@ -1,0 +1,55 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?
+	var SAFE_LIMIT = 500; // prevent heavy queries
+	
+	var hashes = request.getParameter("hashes");
+	
+	var tokens = hashes.split(",");
+	if ( tokens.length>0 && tokens.length<=SAFE_LIMIT )
+	{
+		var user = request.getUser();
+		var shareIds = "";
+	
+		var shareManager = server.getShareManager();
+		var shares = shareManager.getShares();
+		if ( shares!=null )
+		{
+			for ( var i=0,len=shares.length; i<len; i++ ) {
+				var share = shares[i];
+				if ( share.checkPermission(user,request.getRemoteAddress()) ) {			
+					shareIds += (shareIds.length==0) ? share.getDbId() : "," + share.getDbId();
+				}
+			}
+		}
+		
+		if ( shareIds.length>0 )
+		{
+			var databaseManager = server.getDatabaseManager();
+			var conn = databaseManager.getConnection("index",false);
+			if ( conn!=null )
+			{
+				var query = "SELECT [itemId],[shareId],[parentItemId],[name],[hash],[directory],[directories],[files],[size],[lastWriteTime]," +
+					"[mdAlbum],[mdArtist],[mdLength],[mdTitle],[mdTrack],[mdYear],[mdBitRate] " +
+					"FROM [items] a INNER JOIN (";
+				
+				for ( var i=0,len=tokens.length; i<len; i++ )
+				{
+					var hash = tokens[i];
+					
+					if ( i==0 ) {
+						query += "SELECT '" + vibe.dbQuote(hash) + "' AS value, " + i + " AS pos ";
+					}
+					else {
+						query += "UNION ALL SELECT '" + vibe.dbQuote(hash) + "'," + i + " ";
+					}
+				}
+				
+				query += ") AS b ON (b.value=a.hash) WHERE a.shareId IN (" + shareIds + ") ORDER BY b.pos";
+	
+				response.write(conn.executeJson(query));
+				
+				databaseManager.releaseConnection(conn);
+			}
+		}
+	}
+?>

@@ -1,0 +1,38 @@
+<?@ include file="/_private/functions/vibe.utilities.vibe" ?>
+<?@ include file="/_private/functions/vibe.settings.vibe" ?>
+<?
+	if ( vibe.getSetting("plugin.playlists.enabled")=="true" )
+	{
+		var playlistId = request.getParameter("playlistId");
+		if ( vibe.isNumeric(playlistId) )
+		{
+			var databaseManager = server.getDatabaseManager();
+			var conn = databaseManager.getConnection("server",true);
+			if ( conn!=null )
+			{
+				conn.executeNonQuery("BEGIN;");
+				
+				var query = "SELECT playlistId FROM playlists " +
+					"WHERE playlistId=" + playlistId + " AND userId=" + request.getUser().getDbId();
+					
+				if ( conn.executeString(query)!=null )
+				{
+					query = "DELETE FROM playlistitems " + 
+						"WHERE playlistId=" + playlistId;
+						
+					if ( conn.executeNonQuery(query) )
+					{
+						query = "DELETE FROM playlists " + 
+							"WHERE playlistId=" + playlistId + " AND userId=" + request.getUser().getDbId();
+				
+						response.write(conn.executeNonQuery(query));
+					}
+				}
+				
+				conn.executeNonQuery("COMMIT;");
+			
+				databaseManager.releaseConnection(conn);
+			}
+		}
+	}
+?>
